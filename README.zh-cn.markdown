@@ -87,7 +87,6 @@ Greeting.contextTypes = {
 <main {...{className: "main", role: "main", children}} />
 ```
 
-Use this to forward `props` to underlying components.
 使用这个方法可以将 `props` 传递给底层的组件。 
 
 ```js
@@ -114,7 +113,7 @@ const FancyDiv = props =>
 我们可以通过将`FancyDiv` 的 `className` 放置在展开props`({...props})` 之后来确保它会"胜出"。
 
 ```js
-// my `className` clobbers your `className`
+// 我的 `className` 会将你的 `className` 改写
 const FancyDiv = props =>
   <div {...props} className="fancy" />
 ```
