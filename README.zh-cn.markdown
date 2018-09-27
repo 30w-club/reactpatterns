@@ -1,10 +1,10 @@
-## Contents
+## 内容
 
-- [Contents](#contents)
+- [内容](#%E5%86%85%E5%AE%B9)
 - [无状态函数](#%E6%97%A0%E7%8A%B6%E6%80%81%E5%87%BD%E6%95%B0)
 - [JSX展开属性](#jsx%E5%B1%95%E5%BC%80%E5%B1%9E%E6%80%A7)
 - [destructuring arguments](#destructuring-arguments)
-- [conditional rendering](#conditional-rendering)
+- [条件渲染](#%E6%9D%A1%E4%BB%B6%E6%B8%B2%E6%9F%93)
 - [子节点类型](#%E5%AD%90%E8%8A%82%E7%82%B9%E7%B1%BB%E5%9E%8B)
 - [Array as children](#array-as-children)
 - [Function as children](#function-as-children)
@@ -157,23 +157,23 @@ const Greeting = ({ name, ...props }) =>
 Avoid forwarding non-DOM `props` to composed components. Destructuring makes this very easy because you can create a new `props` object **without** component-specific `props`.
 
 
-## conditional rendering
+## 条件渲染
 
-You can't use regular if/else conditions inside a component definition. [The conditional (ternary) operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) is your friend.
+在组件的定义中是不能使用 `if/else` 语句的，所以你会需要好朋友[条件(三目)运算符](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator)。
 
-`if`
+`如果`
 
 ```js
 {condition && <span>Rendered when `truthy`</span> }
 ```
 
-`unless`
+`除非`
 
 ```js
 {condition || <span>Rendered when `falsey`</span> }
 ```
 
-`if-else` (tidy one-liners)
+`if-else` (整洁的一行代码)
 
 ```js
 {condition
@@ -182,7 +182,7 @@ You can't use regular if/else conditions inside a component definition. [The con
 }
 ```
 
-`if-else` (big blocks)
+`if-else` (多行代码)
 
 ```js
 {condition ? (
