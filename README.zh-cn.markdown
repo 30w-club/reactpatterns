@@ -1,22 +1,23 @@
 ## Contents
 
-* [无状态函数](#无状态函数)
-* [JSX spread attributes](#jsx-spread-attributes)
-* [Destructuring arguments](#destructuring-arguments)
-* [Conditional rendering](#conditional-rendering)
-* [Children types](#children-types)
-* [Array as children](#array-as-children)
-* [Function as children](#function-as-children)
-* [Render callback](#render-callback)
-* [Children pass-through](#children-pass-through)
-* [Proxy component](#proxy-component)
-* [Style component](#style-component)
-* [Event switch](#event-switch)
-* [Layout component](#layout-component)
-* [Container component](#container-component)
-* [Higher-order component](#higher-order-component)
-* [State hoisting](#state-hoisting)
-* [Controlled input](#controlled-input)
+- [Contents](#contents)
+- [无状态函数](#%E6%97%A0%E7%8A%B6%E6%80%81%E5%87%BD%E6%95%B0)
+- [JSX展开属性](#jsx%E5%B1%95%E5%BC%80%E5%B1%9E%E6%80%A7)
+- [destructuring arguments](#destructuring-arguments)
+- [conditional rendering](#conditional-rendering)
+- [Children types](#children-types)
+- [Array as children](#array-as-children)
+- [Function as children](#function-as-children)
+- [Render callback](#render-callback)
+- [Children pass-through](#children-pass-through)
+- [Proxy component](#proxy-component)
+- [Style component](#style-component)
+- [Event switch](#event-switch)
+- [Layout component](#layout-component)
+- [Container component](#container-component)
+- [Higher-order component](#higher-order-component)
+- [State hoisting](#state-hoisting)
+- [Controlled input](#controlled-input)
 
 ## 无状态函数
 
@@ -73,43 +74,44 @@ Greeting.contextTypes = {
 ```
 
 
-## JSX spread attributes
+## JSX展开属性
 
-Spread Attributes is a JSX feature. It's syntactic sugar for passing all of an object's properties as JSX attributes.
+展开属性是JSX的一个功能，是可以将一个对象所有属性展开为JSX特性的语法糖。
 
-These two examples are equivalent.
+这两个例子是等价的。
 ```js
-// props written as attributes
+// 使用特性定义props
 <main className="main" role="main">{children}</main>
 
-// props "spread" from object
+// 通过对象展开来定义props
 <main {...{className: "main", role: "main", children}} />
 ```
 
 Use this to forward `props` to underlying components.
+使用这个方法可以将 `props` 传递给底层的组件。 
 
 ```js
 const FancyDiv = props =>
   <div className="fancy" {...props} />
 ```
 
-Now, I can expect `FancyDiv` to add the attributes it's concerned with as well as those it's not.
+这样一来， 我们就可以在 `FancyDiv` 中既添加一些与它相关的特性，还可以添加一些与它无关的特性。
 
 ```js
 <FancyDiv data-id="my-fancy-div">So Fancy</FancyDiv>
 
-// output: <div className="fancy" data-id="my-fancy-div">So Fancy</div>
+// 输出结果: <div className="fancy" data-id="my-fancy-div">So Fancy</div>
 ```
 
-Keep in mind that order matters. If `props.className` is defined, it'll clobber the `className` defined by `FancyDiv`
+请注意这里的次序非常重要, 如果定义了 `props.className` , 那么它就会覆盖掉 `FancyDiv` 中定义的 `className` 。
 
 ```js
 <FancyDiv className="my-fancy-div" />
 
-// output: <div className="my-fancy-div"></div>
+// 输出结果: <div className="my-fancy-div"></div>
 ```
 
-We can make `FancyDiv`s className always "win" by placing it after the spread props `({...props})`.
+我们可以通过将`FancyDiv` 的 `className` 放置在展开props`({...props})` 之后来确保它会"胜出"。
 
 ```js
 // my `className` clobbers your `className`
@@ -117,7 +119,7 @@ const FancyDiv = props =>
   <div {...props} className="fancy" />
 ```
 
-You should handle these types of props gracefully. In this case, I'll merge the author's `props.className` with the `className` needed to style my component.
+你应该优雅地处理这种 `props`, 通常我会将自己想应用在组件上的 `className` 与作者的 `props.className` 合并。
 
 ```js
 const FancyDiv = ({ className, ...props }) =>
