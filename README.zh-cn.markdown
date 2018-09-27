@@ -5,7 +5,7 @@
 - [JSX展开属性](#jsx%E5%B1%95%E5%BC%80%E5%B1%9E%E6%80%A7)
 - [destructuring arguments](#destructuring-arguments)
 - [conditional rendering](#conditional-rendering)
-- [Children types](#children-types)
+- [子节点类型](#%E5%AD%90%E8%8A%82%E7%82%B9%E7%B1%BB%E5%9E%8B)
 - [Array as children](#array-as-children)
 - [Function as children](#function-as-children)
 - [Render callback](#render-callback)
@@ -197,11 +197,11 @@ You can't use regular if/else conditions inside a component definition. [The con
 ```
 
 
-## Children types
+## 子节点类型
 
-React can render `children` of many types. In most cases it's either an `array` or a `string`.
+React可以渲染许多类型的子节点， 通常会是数组或者字符串。
 
-`string`
+`字符`
 
 ```js
 <div>
@@ -209,7 +209,7 @@ React can render `children` of many types. In most cases it's either an `array` 
 </div>
 ```
 
-`array`
+`数组`
 
 ```js
 <div>
@@ -217,9 +217,9 @@ React can render `children` of many types. In most cases it's either an `array` 
 </div>
 ```
 
-Functions may be used as children. However, it requires [coordination with the parent component](#render-callback) to be useful.
+也可以把函数作为子节点，但是这需要[与其父组件的要求一致](#render-callback)才可以。
 
-`function`
+`函数`
 
 ```js
 <div>
