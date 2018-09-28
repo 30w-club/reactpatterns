@@ -2,8 +2,8 @@
 
 - [内容](#%E5%86%85%E5%AE%B9)
 - [无状态函数](#%E6%97%A0%E7%8A%B6%E6%80%81%E5%87%BD%E6%95%B0)
-- [JSX展开属性](#jsx%E5%B1%95%E5%BC%80%E5%B1%9E%E6%80%A7)
-- [destructuring arguments](#destructuring-arguments)
+- [JSX展开特性](#jsx%E5%B1%95%E5%BC%80%E7%89%B9%E6%80%A7)
+- [解构参数](#%E8%A7%A3%E6%9E%84%E5%8F%82%E6%95%B0)
 - [条件渲染](#%E6%9D%A1%E4%BB%B6%E6%B8%B2%E6%9F%93)
 - [子节点类型](#%E5%AD%90%E8%8A%82%E7%82%B9%E7%B1%BB%E5%9E%8B)
 - [Array as children](#array-as-children)
@@ -74,7 +74,7 @@ Greeting.contextTypes = {
 ```
 
 
-## JSX展开属性
+## JSX展开特性
 
 展开属性是JSX的一个功能，是可以将一个对象所有属性展开为JSX特性的语法糖。
 
@@ -129,25 +129,26 @@ const FancyDiv = ({ className, ...props }) =>
 ```
 
 
-## destructuring arguments
+## 解构参数
 
-[Destructuring assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) is an ES2015 feature. It pairs nicely with `props` in Stateless Functions.
+[解构赋值](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) is an ES2015 feature. It pairs nicely with `props` in Stateless Functions.
+是ES2015中的新特性，它可以很好的在无状态函数中配合 `props` 使用。
 
-These examples are equivalent.
+这些例子是等价的：
 ```js
 const Greeting = props => <div>Hi {props.name}!</div>
 
 const Greeting = ({ name }) => <div>Hi {name}!</div>
 ```
 
-The [rest parameter syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters) (`...`) allows you to collect all the remaining properties in a new object.
+[剩余参数](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters) (`...`)可以使我们收集到对象其他的属性。
 
 ```js
 const Greeting = ({ name, ...props }) =>
   <div>Hi {name}!</div>
 ```
 
-In turn, this object can use [JSX Spread Attributes](#jsx-spread-attributes) to forward `props` to the composed component.
+也就是说，这个对象可以通过[JSX展开特性](#JSX展开特性)来将其传递至里面的组件。
 
 ```js
 const Greeting = ({ name, ...props }) =>
